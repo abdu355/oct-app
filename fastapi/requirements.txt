@@ -1,0 +1,10 @@
+fastapi
+pillow
+torch
+torchvision
+python-multipart
+aiofiles
+pytorch-lightning
+lightning-bolts
+captum
+Pillow
