@@ -1,5 +1,5 @@
 import io
-
+import os
 import requests
 from PIL import Image
 from requests_toolbelt.multipart.encoder import MultipartEncoder
@@ -7,7 +7,7 @@ import streamlit as st
 import json
 
 # interact with FastAPI endpoint
-backend = "http://fastapi:8000/predict"
+backend = f"http://{os.getenv('FASTAPI_URL')}:{os.getenv('FASTAPI_PORT')}/predict"
 
 
 def process(image, server_url: str):
