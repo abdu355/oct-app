@@ -7,17 +7,17 @@ import streamlit as st
 import json
 
 # interact with FastAPI endpoint
-backend = f"http://{st.secrets["fastapi_url"]}:{st.secrets["fastapi_port"]}/predict"
+url = st.secrets["fastapi_url"]
+port = st.secrets["fastapi_port"]
+
+backend = f"http://{url}:{port}/predict"
 
 
 def process(image, server_url: str):
-
     m = MultipartEncoder(fields={"file": ("filename", image, "image/jpeg")})
-
     r = requests.post(
         server_url, data=m, headers={"Content-Type": m.content_type}, timeout=8000
     )
-
     return r
 
 
