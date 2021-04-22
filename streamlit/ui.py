@@ -7,7 +7,7 @@ import streamlit as st
 import json
 
 # interact with FastAPI endpoint
-backend = f"http://{'STREAMLIT_FASTAPI_URL'}:{'STREAMLIT_FASTAPI_PORT'}/predict"
+backend = f"http://{st.secrets["fastapi_url"]}:{st.secrets["fastapi_port"]}/predict"
 
 
 def process(image, server_url: str):
