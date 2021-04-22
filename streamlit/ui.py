@@ -7,11 +7,13 @@ import streamlit as st
 import json
 
 # interact with FastAPI endpoint
-url = st.secrets["fastapi_url"]
-port = st.secrets["fastapi_port"]
+# url = st.secrets["fastapi_url"]
 
-backend = f"{url}:{port}/predict"
+# class_api = f"{url}/predict"
+# gradcam_api = f"{url}/gradcam"
 
+class_api = "http://fastapi:8000/predict"
+gradcam_api = "http://fastapi:8000/gradcam"
 
 def process(image, server_url: str):
     m = MultipartEncoder(fields={"file": ("filename", image, "image/jpeg")})
@@ -33,13 +35,20 @@ input_image = st.file_uploader("insert image")  # image upload widget
 if st.button("Analyze OCT scan"):
 
     col1, col2 = st.beta_columns(2)
+    col3, col4 = st.beta_columns(2)
 
     if input_image:
-        outputs = process(input_image, backend)
+        outputs_class = process(input_image, class_api)
+        outputs_gradcam = process(input_image, gradcam_api)     
+        classification_res = json.loads(outputs_class.content)
+
         original_image = Image.open(input_image).convert("RGB")
+        gradcam_image = Image.open(io.BytesIO(outputs_gradcam.content)).convert("RGB")
+
         col1.header("Original")
         col1.image(original_image, use_column_width=True)
-        col2.json(json.loads(outputs.content))
+        col2.json(classification_res)
+        col3.image(gradcam_image, use_column_width=True)
 
     else:
         # handle case with no image

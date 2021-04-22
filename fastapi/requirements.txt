@@ -8,3 +8,4 @@ pytorch-lightning
 lightning-bolts
 captum
 Pillow
+numpy
