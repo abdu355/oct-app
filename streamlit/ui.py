@@ -10,7 +10,7 @@ import json
 url = st.secrets["fastapi_url"]
 port = st.secrets["fastapi_port"]
 
-backend = f"http://{url}:{port}/predict"
+backend = f"{url}:{port}/predict"
 
 
 def process(image, server_url: str):
