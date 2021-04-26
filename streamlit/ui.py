@@ -45,9 +45,11 @@ if st.button("Analyze OCT scan"):
         original_image = Image.open(input_image).convert("RGB")
         gradcam_image = Image.open(io.BytesIO(outputs_gradcam.content)).convert("RGB")
 
-        col1.header("Original")
+        col1.header("Original Input")
         col1.image(original_image, use_column_width=True)
+        col2.header("Output")
         col2.json(classification_res)
+        col3.header("GradCAM")
         col3.image(gradcam_image, use_column_width=True)
 
     else:

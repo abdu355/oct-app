@@ -9,3 +9,4 @@ lightning-bolts
 captum
 Pillow
 numpy
+matplotlib

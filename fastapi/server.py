@@ -26,9 +26,7 @@ def predict(file: bytes = File(...)):
 @app.post("/gradcam")
 def gradcam(file: bytes = File(...)):
     """Get gradcam"""  
-    img_gradcam = get_gradcam(image_bytes=file) 
-    print(img_gradcam)
-    
+    img_gradcam = get_gradcam(image_bytes=file)  
     bytes_io = io.BytesIO()
     img_gradcam.save(bytes_io, format="PNG")
     return Response(bytes_io.getvalue(), media_type="image/png")
