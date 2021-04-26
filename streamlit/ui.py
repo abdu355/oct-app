@@ -7,13 +7,13 @@ import streamlit as st
 import json
 
 # interact with FastAPI endpoint
-# url = st.secrets["fastapi_url"]
+url = st.secrets["fastapi_url"]
 
-# class_api = f"{url}/predict"
-# gradcam_api = f"{url}/gradcam"
+class_api = f"{url}/predict"
+gradcam_api = f"{url}/gradcam"
 
-class_api = "http://fastapi:8000/predict"
-gradcam_api = "http://fastapi:8000/gradcam"
+# class_api = "http://fastapi:8000/predict"
+# gradcam_api = "http://fastapi:8000/gradcam"
 
 def process(image, server_url: str):
     m = MultipartEncoder(fields={"file": ("filename", image, "image/jpeg")})
