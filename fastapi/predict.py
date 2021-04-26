@@ -94,9 +94,6 @@ def get_gradcam(image_bytes):
     upsampled_attr = np.transpose(upsampled_attr.squeeze(0).detach().numpy(),
                                   (1, 2, 0))
 
-    fig, ax = plt.subplots(1)
-    plt.figure(figsize=(15, 10))
-    # plt.subplot(151)
     plt.title(f"class_id: {int(class_id)}")
     plt.axis('off')
     plt.imshow(crop_image(image_bytes),

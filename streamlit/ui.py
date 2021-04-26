@@ -49,7 +49,7 @@ if st.button("Analyze OCT scan"):
         col1.image(original_image, use_column_width=True)
         col2.header("Output")
         col2.json(classification_res)
-        col3.header("GradCAM")
+        col3.header("Layer GradCAM")
         col3.image(gradcam_image, use_column_width=True)
 
     else:
